@@ -1,19 +1,15 @@
 
-t = input()
-t = float(t)
+def Farenheit(T):
 
-
-def fahrenheit(T):
     f = 1.8 * T + 32
     f = str(f"{f:.1f}")
-    return f
+    return print(f"Farenheit: {f}")
 
+Farenheit(32)
 
-def kelvin(T):
+def Kelvin(T):
     k = T + 273.15
     k = str(f"{k:.2f}")
-    return k
+    return print(f"Kelvin: {k}")
 
-
-print(f"Fahrenheit: {fahrenheit(t)}")
-print(f"Kelvin: {kelvin(t)}")
+Kelvin(32)
