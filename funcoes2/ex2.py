@@ -1,6 +1,5 @@
 import statistics
 
-
 def calculaMedia():
 
     n1, n2, n3 = map(int,input("Digite 3 números positivos: ").split(" "))
@@ -16,8 +15,6 @@ def calculaMedia():
     quantidade_vezes_nota2 = listaNotas.count(n2)
     quantidade_vezes_nota3 = listaNotas.count(n3)
 
-    # print(n1, n2, n3, listaNotas, quantidade_vezes_nota)
-
     if(caractere == "A" or caractere == "a"):
 
         soma = n1 + n2 + n3
@@ -31,14 +28,11 @@ def calculaMedia():
 
         mediaPonderada = somaNotaVezesPeso / somaPesos
         return print(f"A média aritmética ponderada é: {mediaPonderada}")
+
     elif (caractere == "H" or caractere == "h"):
 
         mediaHarmonica = statistics.harmonic_mean(listaNotas)
         print(f"A média harmonica é: {mediaHarmonica}")
-
-        
-
-
 
 
 calculaMedia()
