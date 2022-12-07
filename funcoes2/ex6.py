@@ -3,6 +3,7 @@ def raizes(a, b, c):
     delta = (b**2) - (4 * a * c) 
  
     print(delta)
+
     if(delta < 0):
         print("Não há raízes reais!")
 
@@ -10,7 +11,7 @@ def raizes(a, b, c):
 
        result = b / (2 * a)
 
-       print(f"Há {result} raízes reais")
+       print(f"Há {int(result)} raízes reais")
     else:
         print("Possui duas raízes reais!")
 
