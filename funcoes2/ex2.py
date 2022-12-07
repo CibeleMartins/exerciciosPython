@@ -11,9 +11,9 @@ def calculaMedia():
     listaNotas.append(n2)
     listaNotas.append(n3)
 
-    quantidade_vezes_nota1 = listaNotas.count(n1)
-    quantidade_vezes_nota2 = listaNotas.count(n2)
-    quantidade_vezes_nota3 = listaNotas.count(n3)
+    # quantidade_vezes_nota1 = listaNotas.count(n1)
+    # quantidade_vezes_nota2 = listaNotas.count(n2)
+    # quantidade_vezes_nota3 = listaNotas.count(n3)
 
     if(caractere == "A" or caractere == "a"):
 
@@ -23,8 +23,10 @@ def calculaMedia():
 
     elif(caractere == "P" or caractere == "p"):
 
-        somaNotaVezesPeso = (n1 * quantidade_vezes_nota1) + (n2 * quantidade_vezes_nota2) + (n3 * quantidade_vezes_nota3)
-        somaPesos = quantidade_vezes_nota1 + quantidade_vezes_nota2 + quantidade_vezes_nota3
+        peso1, peso2, peso3 = map(float, input("Digite um peso para cada nota: ").split(" "))
+
+        somaNotaVezesPeso = (n1 * peso1) + (n2 * peso2) + (n3 * peso3)
+        somaPesos = peso1 + peso2 + peso3
 
         mediaPonderada = somaNotaVezesPeso / somaPesos
         return print(f"A média aritmética ponderada é: {mediaPonderada}")
