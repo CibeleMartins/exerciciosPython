@@ -1,13 +1,17 @@
 def n_termo(i, r, n):
  
-    inicial = i
-    razao = r
-    numero_elementos = n 
 
-    for pa in range(inicial, numero_elementos, razao): 
-
-        result = pa + inicial
-
-    return result
+    return i + (n - 1) * r
+  
 
 print(n_termo(1,1,100))
+print(n_termo(100,-1,100))
+print(n_termo(5,-5,2))
+
+
+
+
+
+       
+
+  
