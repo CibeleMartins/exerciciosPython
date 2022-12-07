@@ -5,7 +5,7 @@ def deivis_sequence(n):
     if n == 2:
         return 2
     
-    return deivis_sequence(n-1) + deivis_sequence(n-2)
+    return deivis_sequence(n-1) + deivis_sequence(n-2) - 1
 
         
 print(deivis_sequence(2))
