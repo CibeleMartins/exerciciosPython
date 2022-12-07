@@ -1,14 +1,8 @@
 def raizes(a, b, c):
 
-    b_elevado = b**2
-
-    a_multiplica_quatro = 4 * a
-
-    subtracao = b_elevado - a_multiplica_quatro
-
-    delta = subtracao * c
-
+    delta = (b**2) - (4 * a * c) 
+ 
     print(delta)
 
 
-raizes(1,2,4)
+raizes(6,11,-35)
