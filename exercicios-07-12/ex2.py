@@ -19,12 +19,19 @@ def salarioMedioSatisfacaoGarantida():
         print(listaColaboradores[salario])
 
         listaSalarios.append(listaColaboradores[salario])
+
     
     soma_salarios = functools.reduce(lambda atual, proximo: float(atual) + float(proximo), listaSalarios )
 
     print(listaSalarios, soma_salarios)
     
     print(listaColaboradores)
+
+    media_salarial = soma_salarios / (len(listaSalarios) - 1)
+
+    print(f"A média salarial é de %.2f" %(media_salarial))
+
+
 
 
   
