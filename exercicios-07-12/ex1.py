@@ -43,3 +43,7 @@ def multiplo3(n):
 multiplo3(12)
 nao_multiplo3(12)
 multiplo3(15)
+multiplo3(57)
+
+
+    
