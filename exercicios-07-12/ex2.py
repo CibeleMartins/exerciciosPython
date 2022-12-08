@@ -1,18 +1,28 @@
+import functools
+
 def salarioMedioSatisfacaoGarantida():
 
     listaColaboradores = []
 
-    for i in range(0, 10):
+    for i in range(0, 9999):
         nome, salario = input("Digite seu nome e salário: ").split()
         listaColaboradores.append(nome)
         listaColaboradores.append(salario)
 
         if nome == "Fim":
             break
-            
-    for salario in range(0, len(listaColaboradores), 2):
-            
+
+    listaSalarios = []     
+
+    for salario in range(0 + 1, len(listaColaboradores), 2):
+        # print(salario)
         print(listaColaboradores[salario])
+
+        listaSalarios.append(listaColaboradores[salario])
+    
+    soma_salarios = functools.reduce(lambda atual, proximo: float(atual) + float(proximo), listaSalarios )
+
+    print(listaSalarios, soma_salarios)
     
     print(listaColaboradores)
 
