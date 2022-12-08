@@ -9,8 +9,14 @@ def salarioMedioSatisfacaoGarantida():
 
         if nome == "Fim":
             break
-
+            
+    for salario in range(0, len(listaColaboradores), 2):
+            
+        print(listaColaboradores[salario])
+    
     print(listaColaboradores)
+
+
   
 
 
