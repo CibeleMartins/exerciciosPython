@@ -34,21 +34,20 @@ def maiorMenorMedia():
 
         salario = int(maior_salario[virgula + 1:tamanho_string])
 
-            
+        tem = str(salario) in maior_salario
+
         colaborador_maior_salario = max(listaSalarios)
         colaborador_menor_salario = min(listaSalarios)
 
-        ganha_mais = str(colaborador_maior_salario) in maior_salario
+        if float(salario) == colaborador_maior_salario:
 
-        ganha_menos = str(colaborador_menor_salario) in  maior_salario
+            print(maior_salario)
 
-        print(colaborador_maior_salario,ganha_mais, ganha_menos)
+            
+   
 
-        if(ganha_mais):
-            print(listaColaboradores[maior_salario])
-        elif(ganha_menos):
-            print(listaColaboradores[maior_salario])
-
+     
+    print(tem)
 
 
 
@@ -59,7 +58,19 @@ def maiorMenorMedia():
 
 
 
+# def maiorMenorMedia():
 
+#     n = int(input("Digite um número: "))
+
+#     for i in range(0,n):
+
+#         colaborador, salario = input("Digite seu nome e seu salário: ").split()
+
+
+    
+
+
+        
 
 
 
