@@ -24,6 +24,8 @@ def maiorSalario():
     salarios_float = map(lambda i: float(i), listaSalarios)
     
     for salario_numero in salarios_float:
-        print(f"O maior salário é:", max(salarios_float))
+
+        maior_salario = max(salarios_float)
+        print(f"O maior salário é: %.2f" %(maior_salario))
 
 maiorSalario()
