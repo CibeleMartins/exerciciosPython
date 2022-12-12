@@ -32,11 +32,30 @@ def maiorMenorMedia():
         
         tamanho_string = len(maior_salario)
 
-        salario = maior_salario[virgula + 1:tamanho_string]
+        salario = int(maior_salario[virgula + 1:tamanho_string])
+
+            
+        colaborador_maior_salario = max(listaSalarios)
+        colaborador_menor_salario = min(listaSalarios)
+
+        ganha_mais = str(colaborador_maior_salario) in maior_salario
+
+        ganha_menos = str(colaborador_menor_salario) in  maior_salario
+
+        print(colaborador_maior_salario,ganha_mais, ganha_menos)
+
+        if(ganha_mais):
+            print(listaColaboradores[maior_salario])
+        elif(ganha_menos):
+            print(listaColaboradores[maior_salario])
+
+
+
+
 
         
 
-    print(*listaColaboradores, sep="\n")
+    # print(*listaColaboradores, sep="\n")
 
 
 
