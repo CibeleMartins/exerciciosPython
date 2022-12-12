@@ -18,7 +18,7 @@ def vamosAoShow():
 
     media = soma_dinheiro_amigos / quantidade_amigos
 
-    print(f"Média: {media}")
+    print(f"Média: %.0f" %(media))
 
     if media > preco_ingresso:
         print("O rock reinará mais uma vez!")
