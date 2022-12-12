@@ -4,6 +4,11 @@ def maiorMenorMedia():
 
     n = int(input("Digite um número: "))
 
+    if n == 0:
+        print("Não tem média")
+        print("Não tem")
+        print("Não tem")
+
     listaColaboradores = []
     listaSalarios = []
 
@@ -19,59 +24,40 @@ def maiorMenorMedia():
         listaColaboradores.append(juncao_nome_salario)
         listaSalarios.append(float(salario))
         # listaColaboradores.append(salario)
-    
-    soma_salarios = functools.reduce(lambda a, p: a + p, listaSalarios)
+    if len(listaSalarios) > 0:
+        # soma_salarios = functools.reduce(lambda a, p: a + p, listaSalarios)
+        soma = 0
+        for i in listaSalarios:
 
-    media_salarial = soma_salarios / len(listaSalarios)
+            soma = soma + i
 
-    for maior_salario in listaColaboradores:
+        media_salarial = soma / len(listaSalarios)
 
-        # virgula = ',' in maior_salario
+        media_salarial_float = float(media_salarial)
 
-        virgula = maior_salario.find(",")
-        
-        tamanho_string = len(maior_salario)
+    if len(listaColaboradores) > 0:
 
-        salario = int(maior_salario[virgula + 1:tamanho_string])
+        for maior_salario in listaColaboradores:
 
-        tem = str(salario) in maior_salario
+            # virgula = ',' in maior_salario
 
-        colaborador_maior_salario = max(listaSalarios)
-        colaborador_menor_salario = min(listaSalarios)
-
-        if float(salario) == colaborador_maior_salario:
-
-            print(maior_salario)
-
+            virgula = maior_salario.find(",")
             
-   
+            tamanho_string = len(maior_salario)
 
-     
-    print(tem)
+            salario = int(maior_salario[virgula + 1:tamanho_string])
 
+            colaborador_maior_salario = max(listaSalarios)
+            colaborador_menor_salario = min(listaSalarios)
 
+            if float(salario) == colaborador_maior_salario:
+                
+                ganha_mais = maior_salario
 
+            if float(salario) == colaborador_menor_salario:
 
+                ganha_menos = maior_salario
         
-
-    # print(*listaColaboradores, sep="\n")
-
-
-
-# def maiorMenorMedia():
-
-#     n = int(input("Digite um número: "))
-
-#     for i in range(0,n):
-
-#         colaborador, salario = input("Digite seu nome e seu salário: ").split()
-
-
-    
-
-
-        
-
-
+        print(f"%.2f {ganha_mais} {ganha_menos}" %(media_salarial_float), sep="\n")
 
 maiorMenorMedia()
