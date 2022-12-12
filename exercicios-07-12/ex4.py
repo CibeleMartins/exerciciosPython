@@ -26,13 +26,15 @@ def maiorMenorMedia():
 
     for maior_salario in listaColaboradores:
 
-        virgula = ',' in maior_salario
+        # virgula = ',' in maior_salario
+
+        virgula = maior_salario.find(",")
         
         tamanho_string = len(maior_salario)
 
-        # salario = maior_salario[virgula:tamanho_string]
+        salario = maior_salario[virgula + 1:tamanho_string]
 
-        print(virgula, tamanho_string, salario)
+        
 
     print(*listaColaboradores, sep="\n")
 
