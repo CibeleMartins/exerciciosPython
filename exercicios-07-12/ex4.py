@@ -14,8 +14,6 @@ def maiorMenorMedia():
 
     for i in range(0, n):
 
-        # nome, salario = input("Digite seu nome e seu salário: ").split()
-
         nome = input("Digite seu nome: ")
         salario = input("Digite seu salário: ")
 
@@ -25,13 +23,9 @@ def maiorMenorMedia():
         listaSalarios.append(float(salario))
         # listaColaboradores.append(salario)
     if len(listaSalarios) > 0:
-        # soma_salarios = functools.reduce(lambda a, p: a + p, listaSalarios)
-        soma = 0
-        for i in listaSalarios:
+        soma_salarios = functools.reduce(lambda a, p: a + p, listaSalarios)
 
-            soma = soma + i
-
-        media_salarial = soma / len(listaSalarios)
+        media_salarial = soma_salarios / len(listaSalarios)
 
         media_salarial_float = float(media_salarial)
 
