@@ -21,7 +21,7 @@ def maiorMenorMedia():
        
         listaColaboradores.append(juncao_nome_salario)
         listaSalarios.append(float(salario))
-        # listaColaboradores.append(salario)
+   
     if len(listaSalarios) > 0:
         soma_salarios = functools.reduce(lambda a, p: a + p, listaSalarios)
 
