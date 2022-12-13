@@ -1,9 +1,3 @@
-# tamanho populacao
-# taxa crescimento anual de 2 cidades A e B
-# cidade menor A
-# quando a cidade menor alcancara a B em populacao
-# se for muito tempo n precisa saber o tempo
-
 def aAlcancaraBEm():
 
     populacao_a, populacao_b = map(int, input("Digite a populacao da ciadade A e B: ").split())
@@ -30,12 +24,5 @@ def aAlcancaraBEm():
         print(f"Após {anos} ano(s) cidade A alcançará a B em população.")
         print(f"Cidade A: %.0f" %(populacao_a))
         print(f"Cidade B: %.0f" %(populacao_b))
-
-   
-
-
-
-
-
 
 aAlcancaraBEm()
