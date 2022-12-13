@@ -1,41 +1,26 @@
 # fibonacci sequencia de numeros inteiros ok
 # comeca por 0 ok
-# dois prmeiros valores da sequencia 0 e 1
+# dois prmeiros valores da sequencia 0 e 1 ok
 # cada termo subsequente corresponde a soma dos dois anteriores
-
-
-# def fibonacci(n):
-
-#     if n == 1:
-#         return 0
-
-#     if n == 2:
-#         return 1
-
-#     print(n)
-#     return fibonacci(n - 1) + fibonacci(n - 2) - 1
-
-
-# print(fibonacci(1))
 
 def fibonacci(n):
 
-    for i in range(0, n):
+    termo_1 = 0
+    termo_2 = 1
 
-        if i == 0:
-            print(0)
-        if i == 1:
-            print(1)
+    count = 3
+    print(termo_1, termo_2, end=' ')
 
-        if i > 1:
+    while count <= n:
 
-            fibo = i - 1
-            nacci = i - 2
+        termo_3 = termo_1 + termo_2
+        print(termo_3, end=' ')
+        termo_1 = termo_2
+        termo_2 = termo_3
 
-            termo = fibo + nacci
+        count += 1
 
-            print(termo)
- 
-
+       
+        
 
 fibonacci(10)
