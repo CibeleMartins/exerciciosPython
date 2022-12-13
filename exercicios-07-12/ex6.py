@@ -13,20 +13,29 @@ def aAlcancaraBEm():
 
     anos = 0
 
-    while(populacao_a <= populacao_b):
+    while(populacao_b >= populacao_a):
+
+        if taxa_cresc_a <= 0:
+            print("A nunca alcancara B")
+
+            break
 
         anos += 1
 
-        # print(anos)
-
-        porcentagem_a = (taxa_cresc_a / 100) // 1
+        populacao_a = (populacao_a + (populacao_a * (taxa_cresc_a / 100.0))) // 1
     
+    if anos > 1000:
+        print("Mais de um milenio.")
+    else:
+        print(f"Após {anos} ano(s) cidade A alcançará a B em população.")
+        print(f"Cidade A: %.0f" %(populacao_a))
+        print(f"Cidade B: %.0f" %(populacao_b))
 
-        populacao_a = populacao_a + (populacao_a * taxa_cresc_a / 100) // 1 
-  
-    
-    print(f"Após {anos - 1} ano(s) cidade A alcançará a B em população.")
-    print(f"Cidade A: %.0f" %(populacao_a - 1))
-    print(f"Cidade B: %.0f" %(populacao_b))
+   
+
+
+
+
+
 
 aAlcancaraBEm()
