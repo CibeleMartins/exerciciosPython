@@ -1,7 +1,4 @@
-# fibonacci sequencia de numeros inteiros ok
-# comeca por 0 ok
-# dois prmeiros valores da sequencia 0 e 1 ok
-# cada termo subsequente corresponde a soma dos dois anteriores
+from functools import lru_cache
 
 def fibonacci(n):
 
@@ -20,7 +17,5 @@ def fibonacci(n):
 
         count += 1
 
-       
-        
 
-fibonacci(10)
+
