@@ -18,17 +18,17 @@ def quantosAmigos():
 
         lista_nomes.append(nome_aluno)
 
-    if numero_alunos % 2 != 0:
+    if numero_alunos % numero_pares_amigos != 0:
 
        for nome in lista_nomes:
 
             print(f"{nome} possui 2 amigos")
 
+    if numero_alunos % numero_pares_amigos == 0:
 
-      
+        for nome in lista_nomes:
 
+            print(f"{nome} possui 1 amigo.")
 
-
-  
 
 quantosAmigos()
