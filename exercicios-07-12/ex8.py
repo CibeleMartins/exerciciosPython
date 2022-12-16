@@ -1,34 +1,30 @@
-# se A e amigo de B,, entao B é amigo de A
-# se A e amigo de B e B e amigo de C, A e amigo de C
+qtd_alunos, pares_amizade = map(int, input("Digite o número de amigos e os pares de amizades: ").split())
+
+alunos = input("Digite o nome do aluno: ").split()
+
+amizades = {}
 
 
-def quantosAmigos():
+for aluno in alunos:
 
-    numero_alunos, numero_pares_amigos = map(int, input("Digite o número de alunos e o número de pares de amigos: ").split())
+    print(aluno)
 
-    count = 0
+    amizades[aluno] = dict({aluno: None})
 
-    lista_nomes = []
+for amizade in range(pares_amizade):
 
-    while count <= numero_alunos - 1:
+    amigo1, amigo2 = input("Digite o nome de dois amigos: ").split()
 
-        count += 1
+    amizades[amigo1].update(amizades[amigo2])
 
-        nome_aluno = input(f"Digite o nome do aluno {count}: ")
+    for aluno in amizades[amigo1]:
 
-        lista_nomes.append(nome_aluno)
+        amizades[aluno].update(amizades[aluno])
+    
+    for aluno in amizades[amigo1]:
 
-    if numero_alunos % numero_pares_amigos != 0:
+        amizades[aluno] = amizades[amigo1]
 
-       for nome in lista_nomes:
+    for i in sorted(alunos):
 
-            print(f"{nome} possui 2 amigos")
-
-    if numero_alunos % numero_pares_amigos == 0:
-
-        for nome in lista_nomes:
-
-            print(f"{nome} possui 1 amigo.")
-
-
-quantosAmigos()
+        print(aluno + f'possui {len(amizades[aluno])} amigos')
