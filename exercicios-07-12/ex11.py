@@ -1,6 +1,6 @@
-print('-'*30)
+print('-'*50)
 print('Anote a posição dos jogadores. 1 para jogador do São Paulo e 0 para jogador do Corinthians')
-print('-'*30)
+print('-'*50)
 
 posicoes_jogadores = input("Digite as posições: ")
 
