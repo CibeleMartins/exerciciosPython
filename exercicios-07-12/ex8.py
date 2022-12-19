@@ -11,11 +11,15 @@ for aluno in alunos:
 
     amizades[aluno] = dict({aluno: None})
 
+    print(amizades)
+
 for amizade in range(pares_amizade):
 
     amigo1, amigo2 = input("Digite o nome de dois amigos: ").split()
 
     amizades[amigo1].update(amizades[amigo2])
+
+    print(amizades)
 
     for aluno in amizades[amigo1]:
 
