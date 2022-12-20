@@ -45,12 +45,18 @@ def IEC60062(valorResistencia):
         # se tiver 3 digitos cada um será uma cor
 
         string_digitos = str(digitos)
-        print(string_digitos)
+        # print(type(string_digitos))
 
-        for i in range(0, len(cores_digito)):
+        valores_cores_digito = cores_digito.values()
+        chaves_cores_digito = cores_digito.keys()
+        # pegou os valores e as chaves do dicionário de cores_dígito
 
-               if string_digitos[i] == cores_digito[i]:
-                    print('tem sim')
+        list_valores_cores_digito = list(valores_cores_digito)
+        list_chaves_cores_digito = list(chaves_cores_digito)
+        # um alista de valores e uma lista de chaves do dicionário cores_digito
+
+        
+
 
 
 
