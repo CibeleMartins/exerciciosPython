@@ -1,6 +1,10 @@
 def IEC60062(valorResistencia):
 
-    cores_digito = {'Preto': '0',
+    cores_digito = {
+                   'Rosa': '',
+                   'Prata': '',
+                   'Dourada': '',
+                   'Preto': '0',
                    'Marrom': '1',
                    'Vermelho': '2',
                    'Laranja': '3',
@@ -11,16 +15,16 @@ def IEC60062(valorResistencia):
                    'Cinza': '8',
                    'Branco': '9'}
 
-    multiplicador = {'Preto': '1',
-                  'Marrom': '10',
-                  'Vermelho': '100',
-                  'Laranja': '1k',
-                  'Amarelo': '10k',
-                  'Verde': '100k',
-                  'Azul': '1M',
-                  'Violeta': '10M',
-                  'Cinza': '100M',
-                  'Branco': '1G'}
+    multiplicador = {'Preto': 1,
+                  'Marrom':10,
+                  'Vermelho':100,
+                  'Laranja':1000,
+                  'Amarelo':10000,
+                  'Verde':100000,
+                  'Azul':1000000,
+                  'Violeta':10000000,
+                  'Cinza':100000000,
+                  'Branco':1000000000}
 
     tolerancia = {'Marrom': '+/- 1 %',
                  'Vermelho': '+/- 2 %',
@@ -37,10 +41,23 @@ def IEC60062(valorResistencia):
     qtd_digitos = len(str(digitos))
     # transformei em string para saber o tamanho/quantidade de digitos
 
-    # if qtd_digitos == 3:
+    if qtd_digitos == 3:
+        # se tiver 3 digitos cada um será uma cor
+
+        string_digitos = str(digitos)
+        print(string_digitos)
+
+        for i in range(0, len(cores_digito)):
+
+               if string_digitos[i] == cores_digito[i]:
+                    print('tem sim')
 
 
-print(pow(5, 10))
+
+    # print(digitos)
+# print(pow(10, 4))
+
+
 
 
 # para um resistor de 5 faixas a 4 faixa colorida mostra o multiplicador
