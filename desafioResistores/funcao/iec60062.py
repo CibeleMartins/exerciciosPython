@@ -55,6 +55,16 @@ def IEC60062(valorResistencia):
         list_chaves_cores_digito = list(chaves_cores_digito)
         # um alista de valores e uma lista de chaves do dicionário cores_digito
 
+        lista_tuplas_cores_digitos = cores_digito.items()
+
+        print(list(string_digitos), lista_tuplas_cores_digitos)
+
+        # percorreu a lista de valores do dicionário de cores_dígito
+        for chave, valor in lista_tuplas_cores_digitos:
+
+           print(chave, valor)
+
+
         
 
 
