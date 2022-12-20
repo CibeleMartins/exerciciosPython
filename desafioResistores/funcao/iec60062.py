@@ -1,4 +1,7 @@
 def IEC60062(valorResistencia):
 
-    return print(f"{valorResistencia}")
+  digitos = ''.join(v for v in valorResistencia if v.isdigit())
+
+  print(digitos)
+    
 
