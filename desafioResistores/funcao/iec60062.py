@@ -16,23 +16,27 @@ def IEC60062(valorResistencia):
                    'Cinza': '8',
                    'Branco': '9'}
 
-    multiplicador = {'Preto': 1,
+    dict_multiplicador = {
+                    'Rosa':'10 ** -3',
+                    'Prata': 10 ** -2,
+                    'Dourado': 10 ** -1,
+                    'Preto': 1,
                      'Marrom': 10,
-                     'Vermelho': 100,
-                     'Laranja': 1000,
-                     'Amarelo': 10000,
-                     'Verde': 100000,
-                     'Azul': 1000000,
-                     'Violeta': 10000000,
-                     'Cinza': 100000000,
-                     'Branco': 1000000000}
+                     'Vermelho': 10 ** 2,
+                     'Laranja': 10 ** 3,
+                     'Amarelo': 10 ** 4,
+                     'Verde': 10 ** 5,
+                     'Azul': 10 ** 6,
+                     'Violeta': 10 ** 7,
+                     'Cinza': 10 ** 8,
+                     'Branco': 10 ** 9}
 
     caracteres_multiplicadores = {
         'm': '10 ** -3',
-        '-': '1',
-        'K': '10**3',
-        'M': '10**6',
-        'G': '10**9'
+        '-': 1,
+        'K': 10 ** 3,
+        'M': 10 ** 6,
+        'G': 10 ** 9,
     }
 
     tolerancia = {'Marrom': '+/- 1 %',
@@ -52,6 +56,10 @@ def IEC60062(valorResistencia):
         if multiplicador in valorResistencia:
             # verifica se tem algum sinal de ultiplicador no valor da resistencia
 
+            valor_encontrado = caracteres_multiplicadores[multiplicador]
+
+            print(multiplicador, valor_encontrado, valor)
+
             index_multiplicador = valorResistencia.index(multiplicador)
             # pega o indice desse sinal de multiplicador encontrado
 
@@ -68,5 +76,25 @@ def IEC60062(valorResistencia):
 
                 if valor in digitos_cores_sem_ponto:
 
-                    print(cor)
+                    lista_cores_resistor.append(cor)
+                    print(lista_cores_resistor)
+            else:
 
+                for cor, valor in cores_digito.items():
+
+                    if valor in numeros_antes_multiplicador:
+
+                        lista_cores_resistor.append(cor)
+                        print(lista_cores_resistor)
+            
+
+            for chave_cor, valor_multiplicador in dict_multiplicador.items():
+
+                if valor_multiplicador == valor_encontrado:
+
+                    print(chave_cor)
+
+      
+
+
+print(pow(10,-3))
