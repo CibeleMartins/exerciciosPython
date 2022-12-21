@@ -44,8 +44,29 @@ def IEC60062(valorResistencia):
                   'Prata': '+/- 10 %',
                   'Nenhuma': '+/-20 %'}
 
+    lista_cores_resistor = []
+
     for multiplicador, valor in caracteres_multiplicadores.items():
+        # percorre uma lista de tuplas pegando chave e valor do dict caracteres_multiplicadores
 
         if multiplicador in valorResistencia:
+            # verifica se tem algum sinal de ultiplicador no valor da resistencia
 
-            print(multiplicador)
+            index_multiplicador = valorResistencia.index(multiplicador)
+            # pega o indice desse sinal de multiplicador encontrado
+
+            numeros_antes_multiplicador = valorResistencia[0:index_multiplicador]
+            # faz um slicing e pega o valor da resistencia do indice 0 até o sinal multiplicador encontrado
+
+            if '.' in numeros_antes_multiplicador:
+
+               digitos_cores_sem_ponto = numeros_antes_multiplicador.translate(str.maketrans('', '', '.'))
+
+               print(digitos_cores_sem_ponto)
+
+               for cor, valor in cores_digito.items():
+
+                if valor in digitos_cores_sem_ponto:
+
+                    print(cor)
+
