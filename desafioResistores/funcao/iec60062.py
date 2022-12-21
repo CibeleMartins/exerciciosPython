@@ -1,5 +1,5 @@
-# os numeros que estiver antes do pirmeiro caractere sao cores
-# o caractere é o multiplicador
+# os numeros que estiver antes do pirmeiro caractere sao cores ok
+# o caractere é o multiplicador ok
 # o numero apos o espaco e a tolerancia
 
 def IEC60062(valorResistencia):
@@ -58,8 +58,6 @@ def IEC60062(valorResistencia):
 
             valor_encontrado = caracteres_multiplicadores[multiplicador]
 
-            print(multiplicador, valor_encontrado, valor)
-
             index_multiplicador = valorResistencia.index(multiplicador)
             # pega o indice desse sinal de multiplicador encontrado
 
@@ -67,34 +65,32 @@ def IEC60062(valorResistencia):
             # faz um slicing e pega o valor da resistencia do indice 0 até o sinal multiplicador encontrado
 
             if '.' in numeros_antes_multiplicador:
+                # se nos dígitos antes do sinal multiplicador tiver ponto
 
                digitos_cores_sem_ponto = numeros_antes_multiplicador.translate(str.maketrans('', '', '.'))
-
-               print(digitos_cores_sem_ponto)
-
+                # retira o ponto
                for cor, valor in cores_digito.items():
-
+                # transforma o dict de digito de cores em uma lista de tuplas, pega chave e o valor
                 if valor in digitos_cores_sem_ponto:
-
+                    # verifica se tem algum valor do dicionario de digito de cores nos digitos da resistencia antes do sinal multiplicador
                     lista_cores_resistor.append(cor)
-                    print(lista_cores_resistor)
+                    # envia a cor correspondente aos valore para um array
+                    # print(lista_cores_resistor)
             else:
-
+                # se nao tiver ponto nos dígitos antes do sinal multiplicador repete as mesmas intrucoes para esses dígitos
                 for cor, valor in cores_digito.items():
 
                     if valor in numeros_antes_multiplicador:
 
                         lista_cores_resistor.append(cor)
-                        print(lista_cores_resistor)
+                        # print(lista_cores_resistor)
             
 
             for chave_cor, valor_multiplicador in dict_multiplicador.items():
 
                 if valor_multiplicador == valor_encontrado:
-
-                    print(chave_cor)
+                    
+                    lista_cores_resistor.append(chave_cor)
+                    print(lista_cores_resistor)
 
       
-
-
-print(pow(10,-3))
