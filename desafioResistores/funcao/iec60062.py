@@ -5,10 +5,10 @@
 def IEC60062(valorResistencia):
 
     cores_digito = {
-                   'Preto': '0',
-                   'Marrom': '1',
-                   'Vermelho': '2',
-                   'Laranja': '3',
+        'Preto': '0',
+        'Marrom': '1',
+        'Vermelho': '2',
+        'Laranja': '3',
                    'Amarelo': '4',
                    'Verde': '5',
                    'Azul': '6',
@@ -17,40 +17,35 @@ def IEC60062(valorResistencia):
                    'Branco': '9'}
 
     multiplicador = {'Preto': 1,
-                  'Marrom':10,
-                  'Vermelho':100,
-                  'Laranja':1000,
-                  'Amarelo':10000,
-                  'Verde':100000,
-                  'Azul':1000000,
-                  'Violeta':10000000,
-                  'Cinza':100000000,
-                  'Branco':1000000000}
+                     'Marrom': 10,
+                     'Vermelho': 100,
+                     'Laranja': 1000,
+                     'Amarelo': 10000,
+                     'Verde': 100000,
+                     'Azul': 1000000,
+                     'Violeta': 10000000,
+                     'Cinza': 100000000,
+                     'Branco': 1000000000}
+
+    caracteres_multiplicadores = {
+        'm': '10 ** -3',
+        '-': '1',
+        'K': '10**3',
+        'M': '10**6',
+        'G': '10**9'
+    }
 
     tolerancia = {'Marrom': '+/- 1 %',
-                 'Vermelho': '+/- 2 %',
-                 'Verde': "+/- 0.5 %",
-                 'Azul': '+/- 0.25 %',
-                 'Violeta': '+/- 0.1 %',
-                 'Dourado': '+/- 5 %',
-                 'Prata': '+/- 10 %',
-                 'Nenhuma': '+/-20 %'}
+                  'Vermelho': '+/- 2 %',
+                  'Verde': "+/- 0.5 %",
+                  'Azul': '+/- 0.25 %',
+                  'Violeta': '+/- 0.1 %',
+                  'Dourado': '+/- 5 %',
+                  'Prata': '+/- 10 %',
+                  'Nenhuma': '+/-20 %'}
 
-    digitos = ''.join(v for v in valorResistencia if v.isdigit())
-    # peguei os digitos
+    for multiplicador, valor in caracteres_multiplicadores.items():
 
+        if multiplicador in valorResistencia:
 
-
-       
-
-
-        
-
-
-
-
-
-
-
-
-
+            print(multiplicador)
