@@ -68,17 +68,33 @@ def IEC60062(valorResistencia):
             multiplicacao = float(numeros_antes_multiplicador) * (valor)
             multiplicacao_string = str(multiplicacao)
 
-            # print(multiplicacao)
+            print(multiplicacao, multiplicacao_string, type(numeros_antes_multiplicador))
 
-            for i in multiplicacao_string:
+            multiplicacao_string_index_ponto = multiplicacao_string.index('.')
 
-               if i in numeros_antes_multiplicador:
+            multiplicacao_string_sem_ponto = multiplicacao_string[0: multiplicacao_string_index_ponto]
 
-                    multiplicacao_string_index_ponto = multiplicacao_string.index('.')
+            qtd_digitos_iguais = 0
 
-                    multiplicacao_string_sem_ponto = multiplicacao_string[0: multiplicacao_string_index_ponto]
+            for i in range(0, len(numeros_antes_multiplicador) - 1):
 
-                    print(multiplicacao_string_sem_ponto)
+                if multiplicacao_string_sem_ponto[i] in numeros_antes_multiplicador:
+
+                    qtd_digitos_iguais +=1
+
+            qtd_digitos_restantes = len(multiplicacao_string_sem_ponto) - qtd_digitos_iguais
+
+            # print(qtd_digitos_restantes)
+
+            valor_multiplicador = 10 ** qtd_digitos_restantes
+
+            # for cor_dict_multiplicador, valor_dict_multiplicador in dict_multiplicador.items():
+
+            #     if valor_dict_multiplicador == valor_multiplicador:
+
+            #         print(cor_dict_multiplicador)
+                
+            
 
             # se o meu tamanho de digitos é 3/4/5
             # significa que só posso ter 3/4/5 digitos iguais no resultado da multiplicacao 
@@ -113,4 +129,8 @@ def IEC60062(valorResistencia):
             #         lista_cores_resistor.append(chave_cor)
             #         print(lista_cores_resistor)
 
-      
+
+
+# print(pow(10,-3))
+
+# print(13 * 0.001)
