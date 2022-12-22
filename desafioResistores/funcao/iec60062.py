@@ -2,6 +2,8 @@
 # o caractere é o multiplicador ok
 # o numero apos o espaco e a tolerancia
 
+# parei na parte que eu estava tentando pegar o restante dos dígitos do resutlado da multiplicacao dos digitos pelo valor do sinal multiplicador e elevar a 10
+
 def IEC60062(valorResistencia):
 
     cores_digito = {
@@ -68,33 +70,11 @@ def IEC60062(valorResistencia):
             multiplicacao = float(numeros_antes_multiplicador) * (valor)
             multiplicacao_string = str(multiplicacao)
 
-            print(multiplicacao, multiplicacao_string, type(numeros_antes_multiplicador))
+            # print(multiplicacao_string)
 
             multiplicacao_string_index_ponto = multiplicacao_string.index('.')
 
             multiplicacao_string_sem_ponto = multiplicacao_string[0: multiplicacao_string_index_ponto]
-
-            qtd_digitos_iguais = 0
-
-            for i in range(0, len(numeros_antes_multiplicador) - 1):
-
-                if multiplicacao_string_sem_ponto[i] in numeros_antes_multiplicador:
-
-                    qtd_digitos_iguais +=1
-
-            qtd_digitos_restantes = len(multiplicacao_string_sem_ponto) - qtd_digitos_iguais
-
-            # print(qtd_digitos_restantes)
-
-            valor_multiplicador = 10 ** qtd_digitos_restantes
-
-            # for cor_dict_multiplicador, valor_dict_multiplicador in dict_multiplicador.items():
-
-            #     if valor_dict_multiplicador == valor_multiplicador:
-
-            #         print(cor_dict_multiplicador)
-                
-            
 
             # se o meu tamanho de digitos é 3/4/5
             # significa que só posso ter 3/4/5 digitos iguais no resultado da multiplicacao 
@@ -105,32 +85,47 @@ def IEC60062(valorResistencia):
 
                digitos_cores_sem_ponto = numeros_antes_multiplicador.translate(str.maketrans('', '', '.'))
                 # retira o ponto
+               digitos_restantes_multiplicacao = len(multiplicacao_string_sem_ponto) - len(digitos_cores_sem_ponto)
+               multiplicador_encontrado = 10 ** digitos_restantes_multiplicacao
+
+               for chave_multiplicador, valor_multiplicador in dict_multiplicador.items():
+
+                if valor_multiplicador == multiplicador_encontrado:
+
+                    lista_cores_resistor.append(chave_multiplicador)
+                    print(lista_cores_resistor)
+
                for cor, valor in cores_digito.items():
                 # transforma o dict de digito de cores em uma lista de tuplas, pega chave e o valor
                 if valor in digitos_cores_sem_ponto:
                     # verifica se tem algum valor do dicionario de digito de cores nos digitos da resistencia antes do sinal multiplicador
                     lista_cores_resistor.append(cor)
                     # envia a cor correspondente aos valore para um array
-                    # print(lista_cores_resistor)
+                    print(lista_cores_resistor)
+
             else:
+
+               digitos_restantes_multiplicacao = len(multiplicacao_string_sem_ponto) - len(numeros_antes_multiplicador)
+               multiplicador_encontrado = 10 ** digitos_restantes_multiplicacao
+
+               print(digitos_restantes_multiplicacao)
+
+               for chave_multiplicador, valor_multiplicador in dict_multiplicador.items():
+
+                if valor_multiplicador == multiplicador_encontrado:
+
+                    lista_cores_resistor.append(chave_multiplicador)
+                    print(lista_cores_resistor)
                 # se nao tiver ponto nos dígitos antes do sinal multiplicador repete as mesmas intrucoes para esses dígitos
-                for cor, valor in cores_digito.items():
+               for cor, valor in cores_digito.items():
 
                     if valor in numeros_antes_multiplicador:
 
                         lista_cores_resistor.append(cor)
-                        # print(lista_cores_resistor)
+                        print(lista_cores_resistor)
             
-
-            # for chave_cor, valor_multiplicador in dict_multiplicador.items():
-
-            #     if valor_multiplicador == valor_encontrado:
-                    
-            #         lista_cores_resistor.append(chave_cor)
-            #         print(lista_cores_resistor)
+        
 
 
 
-# print(pow(10,-3))
 
-# print(13 * 0.001)

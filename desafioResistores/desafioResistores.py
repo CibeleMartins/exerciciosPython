@@ -18,3 +18,6 @@ with st.container():
 if button:
 
     mostrar_cores.IEC60062(valor_resistencia)
+
+
+
