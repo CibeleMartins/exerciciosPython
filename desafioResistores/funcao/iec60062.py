@@ -58,7 +58,8 @@ def IEC60062(valorResistencia):
         if multiplicador in valorResistencia:
             # verifica se tem algum sinal de multiplicador no valor da resistencia
 
-            valor_encontrado = caracteres_multiplicadores[multiplicador]
+            index_espaco = valorResistencia.index(' ')
+            print(index_espaco)
 
             index_multiplicador = valorResistencia.index(multiplicador)
             # pega o indice desse sinal de multiplicador encontrado
@@ -68,17 +69,14 @@ def IEC60062(valorResistencia):
 
             # multiplica digitos por valor do multiplicador 
             multiplicacao = float(numeros_antes_multiplicador) * (valor)
+            # transforma o resultado da multiplicacao em string
             multiplicacao_string = str(multiplicacao)
 
-            # print(multiplicacao_string)
-
             multiplicacao_string_index_ponto = multiplicacao_string.index('.')
+            # pega o indice do ponto no resultado da multiplicacao
 
             multiplicacao_string_sem_ponto = multiplicacao_string[0: multiplicacao_string_index_ponto]
-
-            # se o meu tamanho de digitos é 3/4/5
-            # significa que só posso ter 3/4/5 digitos iguais no resultado da multiplicacao 
-            # dos meus digitos pelo valor do sinal multiplicador
+            # faz um slicing do início da string até o indice do ponto
 
             if '.' in numeros_antes_multiplicador:
                 # se nos dígitos antes do sinal multiplicador tiver ponto
@@ -86,25 +84,25 @@ def IEC60062(valorResistencia):
                digitos_cores_sem_ponto = numeros_antes_multiplicador.translate(str.maketrans('', '', '.'))
                 # retira o ponto
                digitos_restantes_multiplicacao = len(multiplicacao_string_sem_ponto) - len(digitos_cores_sem_ponto)
+                # subtrai o tamanho da string do resultado da multiplicacao pelo tamanho/quantidade dos dígitos de cores
                multiplicador_encontrado = 10 ** digitos_restantes_multiplicacao
+                # encontra o multiplicador elevando 10 a quantidade de digitos restantes do resultado da multiplicacao após 
+                # subtrai a quantidade de digitos de cores
 
                for chave_multiplicador, valor_multiplicador in dict_multiplicador.items():
 
                 if valor_multiplicador == multiplicador_encontrado:
 
                     lista_cores_resistor.append(chave_multiplicador)
-                    print(lista_cores_resistor)
-
+            
                for cor, valor in cores_digito.items():
                 # transforma o dict de digito de cores em uma lista de tuplas, pega chave e o valor
                 if valor in digitos_cores_sem_ponto:
                     # verifica se tem algum valor do dicionario de digito de cores nos digitos da resistencia antes do sinal multiplicador
                     lista_cores_resistor.append(cor)
                     # envia a cor correspondente aos valore para um array
-                    print(lista_cores_resistor)
-
             else:
-
+                # mesmas instrucoes de cima só que para os dígitos de cores que n foi preciso retirar nenhum ponto
                digitos_restantes_multiplicacao = len(multiplicacao_string_sem_ponto) - len(numeros_antes_multiplicador)
                multiplicador_encontrado = 10 ** digitos_restantes_multiplicacao
 
@@ -115,14 +113,13 @@ def IEC60062(valorResistencia):
                 if valor_multiplicador == multiplicador_encontrado:
 
                     lista_cores_resistor.append(chave_multiplicador)
-                    print(lista_cores_resistor)
                 # se nao tiver ponto nos dígitos antes do sinal multiplicador repete as mesmas intrucoes para esses dígitos
                for cor, valor in cores_digito.items():
 
                     if valor in numeros_antes_multiplicador:
 
                         lista_cores_resistor.append(cor)
-                        print(lista_cores_resistor)
+                        # print(lista_cores_resistor)
             
         
 
