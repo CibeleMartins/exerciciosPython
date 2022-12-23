@@ -38,20 +38,20 @@ def funcao_teste(valorResistencia):
     }
 
     tolerancia = {
-         0: 'Rosa',
-        'Prata': 10,
-        'Marrom': 1,
-        'Preto': 0,
-        'Amarelo': 0.02,
-        'Vermelho': 2,
-        'Verde': 0.5,
-        'Laranja': 0.05,
-        'Azul': 0.25,
-        'Violeta': 0.1,
-        'Dourado': 5,
-        'Nenhuma': 20,
-        'Cinza': 0.01,
-        'Branca': 0, }
+        0: 'Rosa',
+        10:'Prata',
+        1:'Marrom',
+        0:'Preto',
+        0.02: 'Amarelo',
+        2:'Vermelho',
+        0.5:'Verde',
+        0.05:'Laranja',
+        0.25:'Azul',
+        0.1:'Violeta',
+        5:'Dourado',
+        20:'Nenhuma',
+        0.01:'Cinza',
+        0:'Branca', }
 
     for chave, valor in sinais_multiplicadores.items():
 
@@ -71,7 +71,7 @@ def funcao_teste(valorResistencia):
         # acessa o dict de cores p/ dígitos com base nos nos numeros da resistencia
         # manda para a lista de cores do resistor
 
-    # pega o multiplicador
+    # pega cor do multiplicador
     multiplicador = sinais_multiplicadores[valorResistencia[index_multiplicador]]
     tamanho = 3 if len(valor_resistencia.replace('.', '')) == 3 else 2
     while float(valor_resistencia) < 10**(tamanho-1):
@@ -81,15 +81,16 @@ def funcao_teste(valorResistencia):
 
     multiplicador_encontrado = dict_multiplicador[multiplicador]
 
-    print(multiplicador_encontrado)
+    lista_cores_resistor.append(multiplicador_encontrado)
 
+    # pega cor da tolerancia
+    tolerancia_encontrada = tolerancia[float(tolerancia_resistencia)]
 
+    lista_cores_resistor.append(tolerancia_encontrada)
 
-        
+    print(lista_cores_resistor)
+
 
 
 funcao_teste('13m 0.02')
 funcao_teste('2.70M 0.01')
-
-
-
