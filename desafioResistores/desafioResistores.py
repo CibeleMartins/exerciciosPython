@@ -21,33 +21,34 @@ with st.container():
 
     button = st.button(label="Ver cores")
 
+   
+
 
 dict_cores = {
-        'Preto': 'black',
-        # 'Marrom': fg('brown'),
-        'Vermelho': 'red',
-        # 'Laranja': fg('orange'),
-        'Amarelo': 'yellow',
-        'Verde': 'green',
-        'Azul': 'blue',
-        'Violeta': 'violet',
-        # 'Cinza': fg('grey'),
-        'Branco': 'white'
+        'Preto': '#000000',
+        'Marrom': '#8B4513',
+        'Vermelho': '#FF0000',
+        'Laranja': '#FFA500',
+        'Amarelo': '#FFFF00',
+        'Verde': '#008000',
+        'Azul': '	#0000FF',
+        'Violeta': '#A020F0',
+        'Cinza': '#808080',
+        'Branco': '#FFFFFF'
 }
 
+lista = []
 
 if button and len(valor_resistencia) > 0:
 
     mostrar_cores.IEC60062(valor_resistencia)
 
     lista_cores = mostrar_cores.IEC60062(valor_resistencia).copy()
-
+    count = 0
     for i in lista_cores:
 
-        cor_dict_cores = dict_cores[i]
-
-        init()
-        st.(colored(i, cor_dict_cores, 'on_red'))         
+      count += 1  
+      st.color_picker(i, dict_cores[i], key=count)
 
     
 
