@@ -1,6 +1,6 @@
 import streamlit as st
 
-import funcao.IEC60062 as mostrar_cores
+import IEC60062 as mostrar_cores
 
 st.set_page_config(page_title="Cores resistores!", layout='centered')
 
