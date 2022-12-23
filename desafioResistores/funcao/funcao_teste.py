@@ -63,7 +63,6 @@ def funcao_teste(valorResistencia):
             index_multiplicador = valorResistencia.index(chave)
             valor_resistencia = valorResistencia[0:index_multiplicador]
 
-            print(valor_resistencia)
     # pegou as partes do valor da resistencia, antes do sinal do multiplicador e depois do espaco
 
     for i in valor_resistencia.replace('.', ''):
@@ -72,7 +71,19 @@ def funcao_teste(valorResistencia):
         # acessa o dict de cores p/ dígitos com base nos nos numeros da resistencia
         # manda para a lista de cores do resistor
 
-       
+    # pega o multiplicador
+    sinal_multiplicador_resistencia = valorResistencia[index_multiplicador]
+    valor_sinal_multiplicador = sinais_multiplicadores[sinal_multiplicador_resistencia]
+
+    multiplicacao_sinal_resistencia = float(valor_resistencia) * (valor_sinal_multiplicador)
+
+    digitos_restantes_resultado_multiplicacao = len(str(multiplicacao_sinal_resistencia)) - len(valor_resistencia)
+
+    multiplicador_encontrado = 10 ** digitos_restantes_resultado_multiplicacao
+
+
+    
+
 
 
 funcao_teste('13m 0.02')
