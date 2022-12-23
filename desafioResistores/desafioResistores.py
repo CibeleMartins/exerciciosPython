@@ -15,9 +15,9 @@ with st.container():
 
     button = st.button(label="Ver cores")
 
-# if button:
+if button:
 
-#     mostrar_cores.IEC60062(valor_resistencia)
+    mostrar_cores.IEC60062(valor_resistencia)
 
 
 

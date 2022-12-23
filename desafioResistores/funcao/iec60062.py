@@ -1,34 +1,35 @@
-
 def IEC60062(valorResistencia):
 
+    lista_cores_resistor = []
+
     cores_digito = {
-        'Preto': '0',
-        'Marrom': '1',
-        'Vermelho': '2',
-        'Laranja': '3',
-        'Amarelo': '4',
-        'Verde': '5',
-        'Azul': '6',
-        'Violeta': '7',
-        'Cinza': '8',
-        'Branco': '9'}
+        '0': 'Preto',
+        '1': 'Marrom',
+        '2': 'Vermelho',
+        '3': 'Laranja',
+        '4': 'Amarelo',
+        '5': 'Verde',
+        '6': 'Azul',
+        '7': 'Violeta',
+        '8': 'Cinza',
+        '9': 'Branco'}
 
     dict_multiplicador = {
-        'Rosa': 10 ** -3,
-        'Prata': 10 ** -2,
-        'Dourado': 10 ** -1,
-        'Preto': 1,
-        'Marrom': 10,
-        'Vermelho': 10 ** 2,
-        'Laranja': 10 ** 3,
-        'Amarelo': 10 ** 4,
-        'Verde': 10 ** 5,
-        'Azul': 10 ** 6,
-        'Violeta': 10 ** 7,
-        'Cinza': 10 ** 8,
-        'Branco': 10 ** 9}
+        10 ** -3: 'Rosa',
+        10 ** -2: 'Prata',
+        10 ** -1: 'Dourado',
+        1: 'Preto',
+        10: 'Marrom',
+        10 ** 2: 'Vermelho',
+        10 ** 3: 'Laranja',
+        10 ** 4: 'Amarelo',
+        10 ** 5: 'Verde',
+        10 ** 6: 'Azul',
+        10 ** 7: 'Violeta',
+        10 ** 8: 'Cinza',
+        10 ** 9: 'Branco'}
 
-    caracteres_multiplicadores = {
+    sinais_multiplicadores = {
         'm': 10 ** -3,
         '-': 1,
         'K': 10 ** 3,
@@ -37,113 +38,79 @@ def IEC60062(valorResistencia):
     }
 
     tolerancia = {
-        'Rosa': 0,
-        'Prata': 10,
-        'Marrom': 1,
-        'Preto': 0,
-        'Amarelo': 0.02,
-        'Vermelho': 2,
-        'Verde': 0.5,
-        'Laranja': 0.05,
-        'Azul': 0.25,
-        'Violeta': 0.1,
-        'Dourado': 5,
-        'Nenhuma': 20,
-        'Cinza': 0.01,
-        'Branca': 0,}
+        0: 'Rosa',
+        10:'Prata',
+        1:'Marrom',
+        0:'Preto',
+        0.02: 'Amarelo',
+        2:'Vermelho',
+        0.5:'Verde',
+        0.05:'Laranja',
+        0.25:'Azul',
+        0.1:'Violeta',
+        5:'Dourado',
+        20:'Nenhuma',
+        0.01:'Cinza',
+        0:'Branca', }
 
-    lista_cores_resistor = []
+    for chave, valor in sinais_multiplicadores.items():
 
-    for multiplicador, valor in caracteres_multiplicadores.items():
-        # percorre uma lista de tuplas pegando chave e valor do dict caracteres_multiplicadores
+        if chave in valorResistencia:
+            index_espaco_resistencia = valorResistencia.index(' ') + 1
+            tolerancia_resistencia = valorResistencia[index_espaco_resistencia:len(
+                valorResistencia)]
 
-        if multiplicador in valorResistencia:
-            # verifica se tem algum sinal de multiplicador no valor da resistencia
-            index_espaco = valorResistencia.index(' ') + 1
-            tolerancia_string = valorResistencia[index_espaco:len(valorResistencia)]
+            index_multiplicador = valorResistencia.index(chave)
+            valor_resistencia = valorResistencia[0:index_multiplicador]
 
-            index_multiplicador = valorResistencia.index(multiplicador)
-            # pega o indice desse sinal de multiplicador encontrado
+    # pegou as partes do valor da resistencia, antes do sinal do multiplicador e depois do espaco
 
-            numeros_antes_multiplicador = valorResistencia[0:index_multiplicador]
-            # faz um slicing e pega o valor da resistencia do indice 0 até o sinal multiplicador encontrado
+    for i in valor_resistencia.replace('.', ''):
+        # percorre a string do valor da resistencia substituindo o '.' por ''
+        lista_cores_resistor.append(cores_digito[i])
+        # acessa o dict de cores p/ dígitos com base nos nos numeros da resistencia
+        # manda para a lista de cores do resistor
 
-            # multiplica digitos por valor do multiplicador
-            multiplicacao = float(numeros_antes_multiplicador) * (valor)
-            # transforma o resultado da multiplicacao em string
-            multiplicacao_string = str(multiplicacao)
+    # pega cor do multiplicador
+    multiplicador = sinais_multiplicadores[valorResistencia[index_multiplicador]]
+    # print(multiplicador)
 
-            multiplicacao_string_index_ponto = multiplicacao_string.index('.')
-            # pega o indice do ponto no resultado da multiplicacao
+    tamanho = 3 if len(valor_resistencia.replace('.', '')) == 3 else 2
 
-            multiplicacao_string_sem_ponto = multiplicacao_string[0: multiplicacao_string_index_ponto]
-            # faz um slicing do início da string até o indice do ponto
+    if len(valor_resistencia) == 1:
 
-            if '.' in numeros_antes_multiplicador:
-                # se nos dígitos antes do sinal multiplicador tiver ponto
+        while float(valor_resistencia) < 10**(tamanho - 2):
 
-                digitos_cores_sem_ponto = numeros_antes_multiplicador.translate(str.maketrans('', '', '.'))
-                # retira o ponto
-                digitos_restantes_multiplicacao = len(multiplicacao_string_sem_ponto) - len(digitos_cores_sem_ponto)
-                # subtrai o tamanho da string do resultado da multiplicacao pelo tamanho/quantidade dos dígitos de cores
-                multiplicador_encontrado = 10 ** digitos_restantes_multiplicacao
-                # encontra o multiplicador elevando 10 a quantidade de digitos restantes do resultado da multiplicacao após
-                # subtrai a quantidade de digitos de cores
-                for cor, valor in cores_digito.items():
-                    # transforma o dict de digito de cores em uma lista de tuplas, pega chave e o valor
-                    if valor in digitos_cores_sem_ponto:
-                        # verifica se tem algum valor do dicionario de digito de cores nos digitos da resistencia antes do sinal multiplicador
-                        lista_cores_resistor.append(cor)
-                        # envia a cor correspondente aos valore para um array
-                for chave_multiplicador, valor_multiplicador in dict_multiplicador.items():
+            valor_resistencia = float(valor_resistencia) * 10
+            multiplicador = multiplicador / 10
 
-                    if valor_multiplicador == multiplicador_encontrado:
+        multiplicador_encontrado = dict_multiplicador[multiplicador]
 
-                        lista_cores_resistor.append(chave_multiplicador)
+        lista_cores_resistor.append(multiplicador_encontrado)
 
-                for chave_tolerancia, valor_tolerancia in tolerancia.items():
-
-                    if str(valor_tolerancia) == tolerancia_string:
-
-                        lista_cores_resistor.append(chave_tolerancia)
-
-            else:
-                    # se nao tiver ponto nos dígitos antes do sinal multiplicador repete as mesmas intrucoes para esses dígitos
-                for cor, valor in cores_digito.items():
-
-                    if valor in numeros_antes_multiplicador:
-
-                        lista_cores_resistor.append(cor)
-
-                if int(multiplicacao_string_sem_ponto) > 0:
-
-                    digitos_restantes_multiplicacao = len(multiplicacao_string_sem_ponto) - len(numeros_antes_multiplicador) 
-                    multiplicador_encontrado = 10 ** digitos_restantes_multiplicacao
-
-                else:
-                    digitos_restantes_multiplicacao = len(multiplicacao_string_sem_ponto) - len(numeros_antes_multiplicador) + (-2)
-                    multiplicador_encontrado = 10 ** digitos_restantes_multiplicacao
+        print(multiplicador_encontrado)
 
 
-                for chave_multiplicador, valor_multiplicador in dict_multiplicador.items():
+    while float(valor_resistencia) < 10**(tamanho-1):
 
-                    if valor_multiplicador == multiplicador_encontrado:
+        valor_resistencia = float(valor_resistencia) * 10
+        multiplicador = multiplicador / 10
 
-                        lista_cores_resistor.append(chave_multiplicador)
+    multiplicador_encontrado = dict_multiplicador[multiplicador]
 
-                for chave_tolerancia, valor_tolerancia in tolerancia.items():
+    lista_cores_resistor.append(multiplicador_encontrado)
 
-                    if str(valor_tolerancia) == tolerancia_string:
+    # pega cor da tolerancia
+    tolerancia_encontrada = tolerancia[float(tolerancia_resistencia)]
 
-                        lista_cores_resistor.append(chave_tolerancia)
+    lista_cores_resistor.append(tolerancia_encontrada)
 
     print(lista_cores_resistor)
 
 
+IEC60062('1- 10')
 IEC60062('13m 0.02')
 IEC60062('2.70M 0.01')
 IEC60062('2.26K 0.05')
 IEC60062('2.7M 1')
 IEC60062('2.2K 2')
-
-
