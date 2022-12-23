@@ -2,11 +2,13 @@ import streamlit as st
 
 import funcao.IEC60062 as mostrar_cores
 
+st.set_page_config(page_title="Cores resistores!", layout='centered')
+
 with st.container():
 
-    with open('style.css') as style:
+    # with open('style.css') as style:
 
-        st.markdown(f'<style>{style.read()}</style>', unsafe_allow_html=True)
+    #     st.markdown(f'<style>{style.read()}</style>', unsafe_allow_html=True)
 
     st.header("Desafio de resistores!")
     st.text("Receba o valor de uma resistencia e a traduza para suas respectivas cores.")
@@ -15,13 +17,14 @@ with st.container():
 
     button = st.button(label="Ver cores")
 
-if button:
+if button and len(valor_resistencia) > 0:
 
     mostrar_cores.IEC60062(valor_resistencia)
 
-lista_cores = mostrar_cores.IEC60062(valor_resistencia).copy()
+    lista_cores = mostrar_cores.IEC60062(valor_resistencia).copy()
 
-st.write(lista_cores)
+    st.write(lista_cores)
+
 
 
 
