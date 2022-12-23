@@ -1,8 +1,3 @@
-# os numeros que estiver antes do pirmeiro caractere sao cores ok
-# o caractere é o multiplicador ok
-# o numero apos o espaco e a tolerancia
-
-# parei na parte que eu estava tentando pegar o restante dos dígitos do resutlado da multiplicacao dos digitos pelo valor do sinal multiplicador e elevar a 10
 
 def IEC60062(valorResistencia):
 
@@ -148,8 +143,6 @@ def IEC60062(valorResistencia):
 IEC60062('13m 0.02')
 IEC60062('2.70M 0.01')
 IEC60062('2.26K 0.05')
-
-
 IEC60062('2.7M 1')
 IEC60062('2.2K 2')
 

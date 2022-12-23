@@ -1,4 +1,4 @@
-def funcao_teste(valorResistencia):
+def IEC60062(valorResistencia):
 
     lista_cores_resistor = []
 
@@ -73,7 +73,24 @@ def funcao_teste(valorResistencia):
 
     # pega cor do multiplicador
     multiplicador = sinais_multiplicadores[valorResistencia[index_multiplicador]]
+    # print(multiplicador)
+
     tamanho = 3 if len(valor_resistencia.replace('.', '')) == 3 else 2
+
+    if len(valor_resistencia) < 2:
+
+        while float(valor_resistencia) < 10**(tamanho - 2):
+
+            valor_resistencia = float(valor_resistencia) * 10
+            multiplicador = multiplicador / 10
+
+        multiplicador_encontrado = dict_multiplicador[multiplicador]
+
+        lista_cores_resistor.append(multiplicador_encontrado)
+
+        print(multiplicador_encontrado)
+
+
     while float(valor_resistencia) < 10**(tamanho-1):
 
         valor_resistencia = float(valor_resistencia) * 10
@@ -91,6 +108,9 @@ def funcao_teste(valorResistencia):
     print(lista_cores_resistor)
 
 
-
-funcao_teste('13m 0.02')
-funcao_teste('2.70M 0.01')
+IEC60062('1- 10')
+IEC60062('13m 0.02')
+IEC60062('2.70M 0.01')
+IEC60062('2.26K 0.05')
+IEC60062('2.7M 1')
+IEC60062('2.2K 2')
