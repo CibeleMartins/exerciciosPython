@@ -1,18 +1,20 @@
 def funcao_teste(valorResistencia):
 
-        cores_digito = {
-        '0': 'Preto',
-        '1': 'Marrom',
-        'Vermelho': '2',
-        'Laranja': '3',
-        'Amarelo': '4',
-        'Verde': '5',
-        'Azul': '6',
-        'Violeta': '7',
-        'Cinza': '8',
-        'Branco': '9'}
+    lista_cores_resistor = []
 
-        dict_multiplicador = {
+    cores_digito = {
+        '0':'Preto',
+        '1':'Marrom',
+        '2':'Vermelho',
+        '3':'Laranja',
+        '4':'Amarelo',
+        '5':'Verde',
+        '6':'Azul',
+        '7':'Violeta',
+        '8':'Cinza',
+        '9':'Branco'}
+
+    dict_multiplicador = {
         'Rosa': 10 ** -3,
         'Prata': 10 ** -2,
         'Dourado': 10 ** -1,
@@ -27,15 +29,15 @@ def funcao_teste(valorResistencia):
         'Cinza': 10 ** 8,
         'Branco': 10 ** 9}
 
-        sinais_multiplicadores = {
+    sinais_multiplicadores = {
         'm': 10 ** -3,
         '-': 1,
         'K': 10 ** 3,
         'M': 10 ** 6,
         'G': 10 ** 9,
-        }
+    }
 
-        tolerancia = {
+    tolerancia = {
         'Rosa': 0,
         'Prata': 10,
         'Marrom': 1,
@@ -49,32 +51,30 @@ def funcao_teste(valorResistencia):
         'Dourado': 5,
         'Nenhuma': 20,
         'Cinza': 0.01,
-        'Branca': 0,}
+        'Branca': 0, }
+
+    for chave, valor in sinais_multiplicadores.items():
+
+        if chave in valorResistencia:
+            index_espaco_resistencia = valorResistencia.index(' ') + 1
+            tolerancia_resistencia = valorResistencia[index_espaco_resistencia:len(
+                valorResistencia)]
+
+            index_multiplicador = valorResistencia.index(chave)
+            valor_resistencia = valorResistencia[0:index_multiplicador]
+
+            print(valor_resistencia)
+    # pegou as partes do valor da resistencia, antes do sinal do multiplicador e depois do espaco
+
+    for i in valor_resistencia.replace('.', ''):
+    # percorre a string do valor da resistencia substituindo o '.' por ''
+        lista_cores_resistor.append(cores_digito[i])
+        # acessa o dict de cores p/ dígitos com base nos nos numeros da resistencia
+        # manda para a lista de cores do resistor
+
+       
 
 
-        for chave, valor in sinais_multiplicadores.items():
-
-            if chave in valorResistencia:
-                index_espaco_resistencia = valorResistencia.index(' ') + 1
-                tolerancia_resistencia = valorResistencia[index_espaco_resistencia:len(valorResistencia)]
-
-                index_multiplicador = valorResistencia.index(chave)
-                valor_resistencia = valorResistencia[0:index_multiplicador]
-
-                print(valor_resistencia)
-        # pegou as partes do valor da resistencia, antes do sinal do multiplicador e depois do espaco
-
-        for i in valor_resistencia:
-
-            print(cores_digito[i])
-
-
-
-               
-            
-        
-
-
-# funcao_teste('13m 0.02')
+funcao_teste('13m 0.02')
 # IEC60062('13M 0.02')
 funcao_teste('2.70M 0.01')
