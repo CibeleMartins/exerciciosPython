@@ -19,5 +19,9 @@ if button:
 
     mostrar_cores.IEC60062(valor_resistencia)
 
+lista_cores = mostrar_cores.IEC60062(valor_resistencia).copy()
+
+st.write(lista_cores)
+
 
 

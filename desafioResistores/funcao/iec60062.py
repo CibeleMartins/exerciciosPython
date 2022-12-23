@@ -88,7 +88,7 @@ def IEC60062(valorResistencia):
 
         lista_cores_resistor.append(multiplicador_encontrado)
 
-        print(multiplicador_encontrado)
+        # print(multiplicador_encontrado)
 
 
     while float(valor_resistencia) < 10**(tamanho-1):
@@ -105,7 +105,9 @@ def IEC60062(valorResistencia):
 
     lista_cores_resistor.append(tolerancia_encontrada)
 
-    print(lista_cores_resistor)
+    # print(lista_cores_resistor)
+
+    return lista_cores_resistor
 
 
 IEC60062('1- 10')
@@ -114,3 +116,5 @@ IEC60062('2.70M 0.01')
 IEC60062('2.26K 0.05')
 IEC60062('2.7M 1')
 IEC60062('2.2K 2')
+
+
